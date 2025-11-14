@@ -16,8 +16,10 @@ import numpy as np
 # -----------------------------------------------
 
 def compute_output_size_1d(input_array, kernel_array):
-    pass
-
+    input_length = input_array.size
+    kernel_length = kernel_array.size
+    output_length = input_length - kernel_length + 1
+    return output_length
 
 # -----------------------------------------------
 # Example:
@@ -37,7 +39,15 @@ print(compute_output_size_1d(input_array, kernel_array))
 def convolve_1d(input_array, kernel_array):
     # Tip: start by initializing an empty output array (you can use your function above to calculate the correct size).
     # Then fill the cells in the array with a loop.
-    pass
+    output_length = compute_output_size_1d(input_array, kernel_array)
+    output = np.empty(output_length)
+    kernel_length = len(kernel_array)
+
+    for i in range(output_length):        
+        window = input_array[i : i + kernel_length]
+        output[i] = np.dot(window, kernel_array)
+    
+    return output
 
 # -----------------------------------------------
 # Another tip: write test cases like this, so you can easily test your function.
