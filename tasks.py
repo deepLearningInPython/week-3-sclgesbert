@@ -97,6 +97,6 @@ def convolute_2d(input_matrix, kernel_matrix):
     for row in range(output_size[0]):
         for col in range(output_size[1]):
             current_window = input_matrix[row:row+kernel_height, col:col+kernel_width]
-            output[row, col] = np.dot(current_window, kernel_matrix)
+            output[row, col] = sum(current_window * kernel_matrix)
     return output
 # -----------------------------------------------
