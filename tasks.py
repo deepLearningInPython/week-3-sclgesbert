@@ -91,8 +91,8 @@ def convolute_2d(input_matrix, kernel_matrix):
     output_size = compute_output_size_2d(input_matrix, kernel_matrix)
     output = np.empty(output_size)
 
-    kernel_height = kernel_matrix.size[0]
-    kernel_width = kernel_matrix[1]
+    kernel_height = kernel_matrix.shape[0]
+    kernel_width = kernel_matrix.shape[1]
     
     for row in range(output_size[0]):
         for col in range(output_size[1]):
